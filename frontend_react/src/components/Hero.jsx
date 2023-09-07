@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ChangingText from "./ChangingText";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
@@ -19,8 +20,7 @@ const Hero = () => {
             Hi, I'm <span className='text-[#915EFF]'>Akshat</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop 3D visuals, user <br className='sm:block hidden' />
-            interfaces and web applications
+          <ChangingText />
           </p>
         </div>
       </div>
