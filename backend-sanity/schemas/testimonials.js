@@ -9,13 +9,8 @@ export default {
             type: 'string'
         },
         {
-            name:'company',
-            title:'Company',
-            type:'string'
-        },
-        {
-            name:'imgurl',
-            title:'ImgUrl',
+            name:'imgUrl',
+            title:'ImageUrl',
             type: 'image',
             options: {
               hotspot: true,
@@ -25,6 +20,6 @@ export default {
             name:'feedback',
             title:'Feedback',
             type:'string'
-        }
-    ]
-}
+        },
+    ],
+};
