@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import { urlFor, client } from '../client';
+import { urlFor, client } from "../client";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
+import ResumeButton from "./ResumeButton";
 
-const ServiceCard = ({ about , index }) => (
+const ServiceCard = ({ about, index }) => (
   <Tilt className="xs:w-[250px] w-full">
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
@@ -59,16 +60,16 @@ const About = () => {
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I'm a skilled software developer with experience in JavaScript and
-        TypeScript, and expertise in frameworks like React, Node.js, Next.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
+        TypeScript, and expertise in frameworks like React, Node.js, Next.js,
+        and Three.js. I'm a quick learner and collaborate closely with clients
+        to create efficient, scalable, and user-friendly solutions that solve
         real-world problems. Let's work together to bring your ideas to life!
       </motion.p>
 
       <br />
       <br />
 
-      <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      {/* <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
         <svg
           className="fill-current w-4 h-4 mr-2"
           xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +78,9 @@ const About = () => {
           <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
         </svg>
         <span>Resume</span>
-      </button>
+      </button> */}
+      
+      <ResumeButton />
 
       <div className="mt-20 flex flex-wrap gap-10">
         {abouts.map((about, index) => (

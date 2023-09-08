@@ -35,9 +35,6 @@ const Contact = () => {
       .send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        // template_xk3pp1q
-        // service_m5wpqnq
-        // bKs4oP1IZMlG27n--
         {
           from_name: form.name,
           to_name: "Akshat Gupta",
