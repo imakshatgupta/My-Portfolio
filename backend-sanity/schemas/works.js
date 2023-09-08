@@ -4,8 +4,8 @@ export default {
     type: 'document',
     fields: [
       {
-        name: 'title',
-        title: 'Title',
+        name: 'name',
+        title: 'Name',
         type: 'string',
       },
     
@@ -15,13 +15,8 @@ export default {
         type: 'string',
       },
       {
-        name: 'projectLink',
+        name: 'source_code_link',
         title: 'Project Link',
-        type: 'string',
-      },
-      {
-        name: 'codeLink',
-        title: 'Code Link',
         type: 'string',
       },
       {
