@@ -4,7 +4,7 @@ import brands from './brands'
 import abouts from './abouts'
 import experiences from './experiences'
 import skills from './skills'
-import workExperience from './workExperience'
+import workExperience from './workExperiences'
 import contact from './contact'
 
 

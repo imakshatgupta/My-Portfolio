@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { urlFor, client } from "../client";
+
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -8,11 +10,23 @@ import { motion } from "framer-motion";
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
-import { experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
 const ExperienceCard = ({ experience }) => {
+  const startDate = experience.dateRange.startDate;
+  const endDate = experience.dateRange.endDate;
+  const formattedDateRange = `${new Date(startDate).toLocaleDateString(
+    "en-US",
+    {
+      month: "short",
+      year: "numeric",
+    }
+  )} - ${new Date(endDate).toLocaleDateString("en-US", {
+    month: "short",
+    year: "numeric",
+  })}`;
+
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -20,33 +34,33 @@ const ExperienceCard = ({ experience }) => {
         color: "#fff",
       }}
       contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
+      date={formattedDateRange}
+      iconStyle={{ background: "#383E56" }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
+        <div className="flex justify-center items-center w-full h-full">
           <img
-            src={experience.icon}
+            src={urlFor(experience.icon).url()}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className="w-[60%] h-[60%] object-contain"
           />
         </div>
       }
     >
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
         <p
-          className='text-secondary text-[16px] font-semibold'
+          className="text-secondary text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
           {experience.company_name}
         </p>
       </div>
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
+      <ul className="mt-5 list-disc ml-5 space-y-2">
         {experience.points.map((point, index) => (
           <li
-            key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            key={experience.point + index}
+            className="text-white-100 text-[14px] pl-1 tracking-wider"
           >
             {point}
           </li>
@@ -57,6 +71,16 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const Experience = () => {
+  const [experiences, setExperiences] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "experiences"]';
+
+    client.fetch(query).then((data) => {
+      setExperiences(data);
+    });
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -68,12 +92,13 @@ const Experience = () => {
         </h2>
       </motion.div>
 
-      <div className='mt-20 flex flex-col'>
+      <div className="mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard
-              key={`experience-${index}`}
+              key={experience.title + index}
               experience={experience}
+              index={index}
             />
           ))}
         </VerticalTimeline>
