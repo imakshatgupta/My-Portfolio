@@ -39,7 +39,7 @@ const About = () => {
   const [abouts, setAbouts] = useState([]);
 
   useEffect(() => {
-    // Define your query to fetch "abouts" documents from the Sanity
+    // Define your query to fetch abouts documents from the Sanity
     const query = '*[_type == "abouts"]';
 
     // Fetch data from Sanity using the client
